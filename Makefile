@@ -10,6 +10,13 @@ test:
 	docker run emissary_test
 
 
+debug_build:
+	docker build -t emissary_skeleton -f Dockerfile-skeleton .
+
+debug: debug_build
+	docker run -it -p $(PORT):8008 -v $(shell pwd):/code:rw emissary_skeleton
+
+
 build:
 	docker build -t emissary .
 

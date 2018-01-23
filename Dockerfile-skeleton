@@ -1,0 +1,20 @@
+FROM ubuntu:xenial
+MAINTAINER Zach Musgrave <ztm@zachm.us>
+
+## This dockerfile is intended for the *opposite* of reproducible builds: easy debugging.
+## Werkzeug's debug server will auto-reload if a Python source file is changed.
+## When run with a RW volume mount (see Makefile) this approach gives the best of both worlds:
+## Easy debugging, but *very little* base environment drift from production.
+
+RUN apt-get update
+RUN apt-get install -y python3 python3-pip
+RUN apt-get install -y libyaml-dev libpcre3-dev
+RUN pip3 install --upgrade pip
+
+ADD requirements-dev.txt /code/requirements-dev.txt
+ADD requirements.txt /code/requirements.txt
+RUN pip3 install -Ur /code/requirements-dev.txt
+
+WORKDIR /code
+
+CMD python3 debug-run.py
