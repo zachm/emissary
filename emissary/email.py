@@ -36,3 +36,6 @@ class Email(object):
             raise MailFailureException('Could not validate: %s' % self.from_addr)
         if not validate_email(self.to_addr):
             raise MailFailureException('Could not validate: %s' % self.to_addr)
+
+    def send(self):
+        raise NotImplementedError
