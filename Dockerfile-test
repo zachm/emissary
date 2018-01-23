@@ -16,4 +16,4 @@ RUN pip3 install -Ur /code/requirements-dev.txt
 ADD . /code
 WORKDIR /code
 
-CMD tox && tox -e coverage
+CMD tox

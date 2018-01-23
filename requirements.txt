@@ -1,4 +1,5 @@
 Flask==0.12.2
 PyYAML==3.12
+email-validator==1.0.3
 requests==2.18.4
 uWSGI==2.0.15
