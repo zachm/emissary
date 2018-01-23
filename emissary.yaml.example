@@ -1,0 +1,12 @@
+emissary:
+    providers:
+        mailgun:
+            enabled: 1.0
+            key: key-REPLACE-WITH-YOUR-KEY
+            endpoint: https://api.mailgun.net/v3/REPLACE-WITH-YOUR-DOMAIN/messages
+            class: emissary.mailgun.Mailgun
+        mandrill:
+            enabled: 0.0
+            key: REPLACE-WITH-YOUR-KEY
+            endpoint: https://mandrillapp.com/api/1.0/messages/send.json
+            class: emissary.mandrill.Mandrill
