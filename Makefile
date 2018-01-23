@@ -16,6 +16,9 @@ debug_build:
 debug: debug_build
 	docker run -it -p $(PORT):8008 -v $(shell pwd):/code:rw emissary_skeleton
 
+interactive: debug_build
+	docker run -it -v $(shell pwd):/code:rw emissary_skeleton bash
+
 
 build:
 	docker build -t emissary .
