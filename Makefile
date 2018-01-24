@@ -9,6 +9,10 @@ test:
 	docker build -t emissary_test -f Dockerfile-test .
 	docker run emissary_test
 
+coverage:
+	docker build -t emissary_test -f Dockerfile-test .
+	docker run emissary_test tox -e coverage
+
 
 debug_build:
 	docker build -t emissary_skeleton -f Dockerfile-skeleton .
