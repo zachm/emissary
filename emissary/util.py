@@ -17,7 +17,7 @@ def validate_payload(request_dict, required_fields):
         :param request_dict: Something behaving like a Python dict. Often a Werkzeug MultiDict.
         :param required_fields: N-tuple of 2-tuples, str=>type. Maps name of field to Python type/class.
         :raise: MarshalingError if payload is invalid.
-        :return: An N-ary list containing the values 
+        :return: An N-ary list containing the values.
     """
     retval = []
     for field, required_type in required_fields:
