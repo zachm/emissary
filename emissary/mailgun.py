@@ -10,7 +10,7 @@ from emissary.email import Email, MailFailureException
 class Mailgun(Email):
 
     def send(self):
-        self.preprocess()
+        self.validate()
 
         url = app.config['emissary']['providers']['mailgun']['endpoint']
         key = app.config['emissary']['providers']['mailgun']['key']

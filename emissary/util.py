@@ -1,6 +1,5 @@
 import logging
 
-from bs4 import BeautifulSoup
 from email_validator import validate_email as _validate_email
 from email_validator import EmailNotValidError
 
@@ -42,14 +41,3 @@ def validate_email(address, dns_check=True):
     except EmailNotValidError as e:
         logging.warn('Email not valid: %s' % address)
         return False
-
-
-def clean_html(body):
-    """ Use BeautifulSoup to make a passable plain text copy of our HTML.
-            Great StackOverflow approach:
-            https://stackoverflow.com/questions/328356/extracting-text-from-html-file-using-python
-        :param body: string, hopefully HTML.
-        :return: plain text string, or the empty string on an exception.
-    """
-    soup = BeautifulSoup(body)
-    return soup  # TODO

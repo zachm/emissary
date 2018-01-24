@@ -16,7 +16,9 @@ def create_email():
 
 
 def test_happy_path():
-    assert create_email().validate() is True
+    em = create_email()
+    assert em.validate() is True
+    assert '# Not today!' in em.body_text
 
 
 def test_missing_addresses():

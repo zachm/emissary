@@ -1,3 +1,5 @@
+import html2text
+
 from emissary.util import validate_email
 
 
@@ -38,8 +40,7 @@ class Email(object):
         self.to_name = to_name
         self.subject = subject
         self.body_html = body_html
-
-        self.body_text = body_html  # TODO
+        self.body_text = ''
 
     def validate(self):
         """ Execute all emissary-level validation and pre-processing steps.
@@ -61,6 +62,8 @@ class Email(object):
         if len(self.from_name) > 256 or len(self.from_name.splitlines()) > 1:
             raise ValidationError('The \'from_name\' field is too long or contained newlines.')
 
+        # Fill out the plain text feature.
+        self.body_text = html2text.html2text(self.body_html)
         return True
 
     def send(self):

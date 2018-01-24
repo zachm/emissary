@@ -10,7 +10,7 @@ from emissary.email import Email, MailFailureException
 class Mandrill(Email):
 
     def send(self):
-        self.preprocess()
+        self.validate()
 
         url = app.config['emissary']['providers']['mandrill']['endpoint']
         key = app.config['emissary']['providers']['mandrill']['key']

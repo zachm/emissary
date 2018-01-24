@@ -1,6 +1,6 @@
 Flask==0.12.2
 PyYAML==3.12
-beautifulsoup4==4.4.0
 email-validator==1.0.3
+html2text==2018.1.9
 requests==2.18.4
 uWSGI==2.0.15
