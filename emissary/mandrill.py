@@ -28,7 +28,6 @@ class Mandrill(Email):
                     'email': self.to_addr,
                     'type': 'to',
                 }, ],
-                # TODO auto_text !!!
             },
         }
 

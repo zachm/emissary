@@ -25,6 +25,7 @@ try:
         app.config['emissary'] = yaml.load(config_file.read()).get('emissary')
 except IOError:
     logging.error('Could not read config file: %s' % CONFIG_FILENAME)
+    app.config['emissary'] = {}
 
 if not app.debug:
     setup_logging()

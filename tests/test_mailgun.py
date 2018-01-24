@@ -1,8 +1,13 @@
 import pytest
 from unittest import mock
 
+from emissary import app
 from emissary.email import MailFailureException
 from emissary.mailgun import Mailgun
+
+
+app.config['emissary']['providers']['mailgun']['endpoint'] = 'EMISSARY_URL'
+app.config['emissary']['providers']['mailgun']['key'] = 'EMISSARY_KEY'
 
 
 def create_email():
@@ -47,7 +52,7 @@ def test_mailgun_needs_a_hug(post_call):
 
     with pytest.raises(MailFailureException):
         mg.send()
-
+        assert post_call.call_args_list[0][0] == 'EMISSARY_URL'
         assert post_call.call_args_list[0][1]['data'] == post_args
         assert post_call.call_count == 1
         assert mg.validate.call_count == 1

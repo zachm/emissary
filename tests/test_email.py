@@ -45,7 +45,6 @@ def test_missing_addresses():
 
 
 def test_missing_subject_body():
-    # TODO BODY TEST
 
     with pytest.raises(ValidationError):
         em = create_email()

@@ -2,8 +2,20 @@ from collections import defaultdict
 import random
 import string
 
+from emissary import app
 from emissary.choice import Choice
 import emissary.mailgun
+
+app.config['emissary']['providers'] = {
+                                       'mailgun': {
+                                                   'enabled': 1.0,
+                                                   'class': 'emissary.mailgun.Mailgun'
+                                                  },
+                                       'mandrill': {
+                                                    'enabled': 0.0,
+                                                    'class': 'emissary.mandrill.Mandrill'
+                                                   }
+                                      }
 
 
 def test_config_integration():
